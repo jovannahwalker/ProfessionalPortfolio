@@ -184,8 +184,7 @@ Feel free to reach out if you have any questions or feedback. You can contact me
 
 Email: jovannahwalker@aol.com
 LinkedIn: https://www.linkedin.com/in/jovannah/
-GitHub: https://github.com/jovannahwalker
-
+GitHub: https://github.com/jovannahwalker/
 Thank you for visiting my portfolio!
 
 
