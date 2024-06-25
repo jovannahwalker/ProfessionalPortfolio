@@ -22,7 +22,7 @@ This portfolio is a collection of projects that I have worked on to showcase my 
 
 Projects
 
-Personal Finance Manager
+Personal Finance Manager:
 A Python-based application to help users manage their personal finances. It allows tracking of expenses and income, categorizing transactions, generating summaries, and visualizing financial data.
 
 Features:
@@ -39,7 +39,7 @@ matplotlib
 seaborn
 Source Code
 
-Web Scraping and Data Analysis
+Web Scraping and Data Analysis:
 A project focused on web scraping using BeautifulSoup and Selenium to extract data from websites, followed by data cleaning, analysis, and visualization.
 
 Features:
@@ -56,7 +56,7 @@ pandas
 matplotlib
 Source Code
 
-Machine Learning Model Deployment
+Machine Learning Model Deployment:
 Developing a machine learning model using scikit-learn and deploying it using Flask to create a web application.
 
 Features:
@@ -71,7 +71,7 @@ scikit-learn
 Flask
 Source Code
 
-Automated Trading Bot
+Automated Trading Bot:
 A bot that trades cryptocurrencies based on predefined strategies using real-time data fetched from APIs.
 
 Features:
@@ -87,7 +87,7 @@ pandas
 API integration
 Source Code
 
-Chatbot with NLP
+Chatbot with NLP:
 A customer service chatbot developed using Natural Language Processing (NLP) techniques with NLTK and SpaCy.
 
 Features:
@@ -102,7 +102,7 @@ NLTK
 SpaCy
 Source Code
 
-Blockchain and Cryptocurrency
+Blockchain and Cryptocurrency:
 A simple blockchain and cryptocurrency system built from scratch to understand the core concepts of blockchain technology.
 
 Features:
@@ -115,7 +115,7 @@ Technologies Used:
 Python
 Source Code
 
-Home Automation System
+Home Automation System:
 A system to control smart home devices using Raspberry Pi and various sensors, with a web interface for management.
 
 Features:
@@ -130,7 +130,7 @@ Raspberry Pi
 Flask
 Source Code
 
-Advanced Game Development
+Advanced Game Development:
 A complex game developed using Pygame, featuring advanced features such as multiplayer support and AI behaviors.
 
 Features:
@@ -144,7 +144,7 @@ Python
 Pygame
 Source Code
 
-Computer Vision Project
+Computer Vision Project:
 Implementing computer vision algorithms using OpenCV to detect and recognize objects, track movements, and apply image transformations.
 
 Features:
@@ -158,7 +158,7 @@ Python
 OpenCV
 Source Code
 
-Distributed Systems
+Distributed Systems:
 A distributed file storage system allowing users to upload, download, and share files across multiple nodes.
 
 Features:
@@ -173,7 +173,7 @@ Source Code
 
 Skills
 
-Programming Languages: Python, JavaScript, HTML, CSS
+Programming Languages - Python, JavaScript, HTML, CSS:
 Frameworks and Libraries: Flask, Django, React, Node.js, pandas, NumPy, scikit-learn, TensorFlow, OpenCV
 Tools: Git, Docker, Kubernetes, Jenkins
 Databases: MySQL, PostgreSQL, MongoDB
