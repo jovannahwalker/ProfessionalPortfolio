@@ -180,7 +180,10 @@ Databases: MySQL, PostgreSQL, MongoDB
 Cloud Platforms: AWS, Azure, Google Cloud
 Contact
 
-Feel free to reach out if you have any questions or feedback. You can contact me via:
+Feel free to reach out if you have any questions or feedback. Stay tuned! 
+
+
+You can contact me via:
 
 Email: jovannahwalker@aol.com
 LinkedIn: https://www.linkedin.com/in/jovannah/
