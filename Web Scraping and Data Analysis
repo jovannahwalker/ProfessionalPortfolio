@@ -1,0 +1,83 @@
+import requests
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Configure Selenium WebDriver
+def configure_webdriver():
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Run in headless mode for non-GUI environments
+    service = Service('path/to/chromedriver')  # Replace with your chromedriver path
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
+
+# Function to scrape data using BeautifulSoup
+def scrape_data(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Example scraping: Extracting table data
+    data = []
+    table = soup.find('table')
+    for row in table.find_all('tr'):
+        cols = row.find_all('td')
+        data.append([col.text.strip() for col in cols])
+    
+    return data
+
+# Function to scrape dynamic content using Selenium
+def scrape_dynamic_content(url):
+    driver = configure_webdriver()
+    driver.get(url)
+    
+    # Example scraping: Extracting data from a dynamic table
+    data = []
+    table = driver.find_element_by_xpath('//table')
+    rows = table.find_elements_by_tag_name('tr')
+    for row in rows:
+        cols = row.find_elements_by_tag_name('td')
+        data.append([col.text.strip() for col in cols])
+    
+    driver.quit()
+    return data
+
+# Data cleaning and analysis
+def analyze_data(data):
+    df = pd.DataFrame(data[1:], columns=data[0])  # Assuming first row is header
+    df.replace('', pd.NA, inplace=True)  # Replace empty strings with NA
+    df.dropna(inplace=True)  # Drop rows with NA values
+    df['Value'] = pd.to_numeric(df['Value'], errors='coerce')  # Convert 'Value' column to numeric
+
+    summary = df.describe()  # Basic statistical summary
+    return df, summary
+
+# Data visualization
+def visualize_data(df):
+    plt.figure(figsize=(10, 6))
+    df['Value'].hist(bins=20)
+    plt.title('Distribution of Values')
+    plt.xlabel('Value')
+    plt.ylabel('Frequency')
+    plt.show()
+
+# Example usage
+# URL for web scraping
+url_static = 'https://example.com/static-table'  # Replace with your target URL
+url_dynamic = 'https://example.com/dynamic-table'  # Replace with your target URL
+
+# Scrape static data
+data_static = scrape_data(url_static)
+df_static, summary_static = analyze_data(data_static)
+print("Static Data Summary:")
+print(summary_static)
+visualize_data(df_static)
+
+# Scrape dynamic data
+data_dynamic = scrape_dynamic_content(url_dynamic)
+df_dynamic, summary_dynamic = analyze_data(data_dynamic)
+print("Dynamic Data Summary:")
+print(summary_dynamic)
+visualize_data(df_dynamic)
