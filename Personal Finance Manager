@@ -1,0 +1,64 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Initialize an empty DataFrame to store transactions
+transactions = pd.DataFrame(columns=['Date', 'Category', 'Type', 'Amount'])
+
+# Function to add a transaction
+def add_transaction(date, category, transaction_type, amount):
+    global transactions
+    new_transaction = pd.DataFrame({
+        'Date': [date],
+        'Category': [category],
+        'Type': [transaction_type],
+        'Amount': [amount]
+    })
+    transactions = pd.concat([transactions, new_transaction], ignore_index=True)
+
+# Function to generate a summary report
+def generate_summary():
+    print("\nSummary Report:")
+    total_income = transactions[transactions['Type'] == 'Income']['Amount'].sum()
+    total_expense = transactions[transactions['Type'] == 'Expense']['Amount'].sum()
+    savings = total_income - total_expense
+    print(f"Total Income: ${total_income:.2f}")
+    print(f"Total Expenses: ${total_expense:.2f}")
+    print(f"Savings: ${savings:.2f}")
+    
+    category_summary = transactions.groupby('Category')['Amount'].sum()
+    print("\nCategory Breakdown:")
+    print(category_summary)
+    
+    return savings
+
+# Function to visualize data
+def visualize_data():
+    sns.set(style="whitegrid")
+    plt.figure(figsize=(10, 6))
+    
+    # Total income vs expenses
+    sns.barplot(x='Type', y='Amount', data=transactions, estimator=sum, ci=None)
+    plt.title("Total Income vs Expenses")
+    plt.show()
+
+    # Expenses by Category
+    expense_data = transactions[transactions['Type'] == 'Expense']
+    sns.barplot(x='Category', y='Amount', data=expense_data, estimator=sum, ci=None)
+    plt.title("Expenses by Category")
+    plt.show()
+
+# Example usage
+add_transaction('2024-08-01', 'Salary', 'Income', 5000)
+add_transaction('2024-08-03', 'Groceries', 'Expense', 300)
+add_transaction('2024-08-05', 'Rent', 'Expense', 1500)
+add_transaction('2024-08-10', 'Dining Out', 'Expense', 150)
+add_transaction('2024-08-15', 'Freelance', 'Income', 1200)
+add_transaction('2024-08-20', 'Utilities', 'Expense', 200)
+add_transaction('2024-08-25', 'Savings', 'Income', 800)
+
+# Generate summary report
+generate_summary()
+
+# Visualize the financial data
+visualize_data()
